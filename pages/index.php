@@ -1,10 +1,14 @@
+<?php
+?>
+
 
 <?php 
-include 'header.php';
+include '../init.php';
+include 'elements/header.php';
 // autoload start
 
-
-include 'database.php';
+/*
+include '../database.php';
 
 function autoload($classname) {
     include $classname . ".php";
@@ -15,8 +19,15 @@ $classname = spl_autoload_register("autoload");
 
 // Inhalt im Blog
 
+*/
 
-$inhalt = fetch_post();
+
+$postRepository = new App\Posts\PostsRepository($myDB);
+
+
+
+$inhalt = $postRepository->fetchPost();
+
 
 
 ?>
@@ -56,4 +67,4 @@ $inhalt = fetch_post();
 </div>
 <?php
 
-include 'footer.php'; ?>
+include 'elements/footer.php'; ?>

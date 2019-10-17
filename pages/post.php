@@ -1,8 +1,10 @@
 <?php
-include 'header.php';
-include 'database.php';
+include '../init.php';
+include 'elements/header.php';
 
-$post = fetch_posts($_GET["id"]);
+$postRepository = new App\Posts\PostsRepository($myDB);
+
+$post = $postRepository->fetchPosts($_GET["id"]);
 
 
 ?>
@@ -16,7 +18,7 @@ $post = fetch_posts($_GET["id"]);
 <div class="col-sm-8 text-left">
 
       <h1><?php echo $post["title"];?></h1>
-      <p><?php echo $post["post"];?>.</p>
+      <p><?php echo nl2br($post["post"]);?></p>
       <hr>
 
     </div>
@@ -33,5 +35,5 @@ $post = fetch_posts($_GET["id"]);
 
 
 <?php 
-include 'footer.php';
+include 'elements/footer.php';
 ?>
