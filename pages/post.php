@@ -21,7 +21,7 @@ $post = $postRepository->fetchPosts($_GET["id"]);
       <p><?php //echo nl2br($post["post"]);?></p>
       
       <h1><?php echo $post->title;?></h1>
-      <p><?php echo nl2br($post->content);?></p>
+      <p><?php echo nl2br($post->post);?></p>
       <hr>
 
     </div>

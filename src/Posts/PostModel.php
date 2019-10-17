@@ -3,7 +3,7 @@
 namespace App\Posts;
 
 class PostModel{
-    public  $id;
+    public $id;
     public $title;
     public $content;
     

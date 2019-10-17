@@ -45,7 +45,7 @@ $inhalt = $postRepository->fetchPost();
     
     <ul>
     <?php foreach ($inhalt as $pos) :?>
-    <li><a href=post.php?id=<?php echo $pos["id"];?>><?php echo $pos["title"];?></a></li>
+    <li><a href=post.php?id=<?php echo $pos->id;?>><?php echo $pos->title;?></a></li>
     <?php endforeach;?>
 
 </ul>
