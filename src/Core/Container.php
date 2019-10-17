@@ -5,6 +5,45 @@ use PDO;
 
 class Container {
     
+    private $receipts = [];
+    private $instances = [];
+    
+    
+    public function __construct(){
+        $this->receipts = [
+            'postsRepository' => function()
+            {
+                return new PostsRepository(
+                    $this->make("myDB")
+                    );
+            },
+            'myDB' => function(){
+            $dsn = 'mysql:dbname=blog;host=127.0.0.1';
+            $user = 'root';
+            $password = '';
+            
+            $myDB = new PDO($dsn,$user,$password);
+            
+            $myDB->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            return $myDB;
+            }
+        ];
+    }
+    
+    public function make($name) {
+        if (!empty($this->instances[$name])) {
+            return $this->instances[$name];
+        }
+        
+        if (isset($this->receipts[$name])) {
+            $this->instances[$name] = $this->receipts[$name]();
+        }
+        
+        
+        return $this->instances[$name];
+    }
+  
+    /*
     private $myDB;
     private $postsRepository;
     
@@ -35,5 +74,5 @@ class Container {
         
         $this->postsRepository = new PostsRepository($this->getPdo());
         return $this->postsRepository;
-    }
+    }*/
 }

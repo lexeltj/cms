@@ -22,7 +22,9 @@ $classname = spl_autoload_register("autoload");
 */
 
 
-$postRepository = $container->getPostsRepository();
+//$postRepository = $container->getPostsRepository();
+
+$postRepository = $container->make("postsRepository");
 
 
 

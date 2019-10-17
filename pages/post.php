@@ -2,7 +2,8 @@
 include '../init.php';
 include 'elements/header.php';
 
-$postRepository = $container->getPostsRepository();
+//$postRepository = $container->getPostsRepository();
+$postRepository = $container->make("postsRepository");
 
 $post = $postRepository->fetchPosts($_GET["id"]);
 
