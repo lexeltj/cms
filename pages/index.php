@@ -22,7 +22,7 @@ $classname = spl_autoload_register("autoload");
 */
 
 
-$postRepository = new App\Posts\PostsRepository($myDB);
+$postRepository = $container->getPostsRepository();
 
 
 

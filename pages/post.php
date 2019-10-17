@@ -2,7 +2,7 @@
 include '../init.php';
 include 'elements/header.php';
 
-$postRepository = new App\Posts\PostsRepository($myDB);
+$postRepository = $container->getPostsRepository();
 
 $post = $postRepository->fetchPosts($_GET["id"]);
 
@@ -20,8 +20,10 @@ $post = $postRepository->fetchPosts($_GET["id"]);
       <h1><?php //echo $post["title"];?></h1>
       <p><?php //echo nl2br($post["post"]);?></p>
       
-      <h1><?php echo $post->title;?></h1>
-      <p><?php echo nl2br($post->post);?></p>
+      <h1><?php //echo $post->title;?></h1>
+      <h1><?php echo $post['title'];?></h1>
+      <p><?php //echo nl2br($post->post);?></p>
+      <p><?php echo nl2br($post['post']);?></p>
       <hr>
 
     </div>
