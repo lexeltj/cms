@@ -14,11 +14,14 @@ function fetch_post(){
 
 function fetch_posts($post) {
     global $myDB;
-    //global $sql;
-    $sql = "select * from posts where id = {$post}";
-    $ergebnis = $myDB->query($sql);
     
-    return $ergebnis->fetch();
+    //$sql = "select * from posts where id = {$post}";
+    $sql = $myDB->prepare("select * from posts where id = ?");
+    $sql->execute([$post]);
+    //$ergebnis = $myDB->query($sql);
+    
+    //return $ergebnis->fetch();
+    return $sql->fetch();
 }
 
 

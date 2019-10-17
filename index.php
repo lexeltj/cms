@@ -17,7 +17,7 @@ $classname = spl_autoload_register("autoload");
 
 
 $inhalt = fetch_post();
-//$title = fetch_posts("title");
+
 
 ?>
 
