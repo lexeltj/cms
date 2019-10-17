@@ -25,6 +25,16 @@ class PostsRepository {
         //$ergebnis = $myDB->query($sql);
         
         //return $ergebnis->fetch();
-        return $sql->fetch();
+        $postArray =  $sql->fetch();
+        
+        
+        
+        // alles neu in OOP
+        
+        $post = new PostModel();
+        $post->id = $postArray["id"];
+        $post->title = $postArray["title"];
+        $post->content = $postArray["post"];
+        return $post;
     }
 }

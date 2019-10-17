@@ -17,8 +17,11 @@ $post = $postRepository->fetchPosts($_GET["id"]);
 </div>
 <div class="col-sm-8 text-left">
 
-      <h1><?php echo $post["title"];?></h1>
-      <p><?php echo nl2br($post["post"]);?></p>
+      <h1><?php //echo $post["title"];?></h1>
+      <p><?php //echo nl2br($post["post"]);?></p>
+      
+      <h1><?php echo $post->title;?></h1>
+      <p><?php echo nl2br($post->content);?></p>
       <hr>
 
     </div>
