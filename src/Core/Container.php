@@ -2,6 +2,7 @@
 namespace App\Core;
 use App\Posts\PostsRepository;
 use PDO;
+use App\Posts\PostsController;
 
 class Container {
     
@@ -11,6 +12,12 @@ class Container {
     
     public function __construct(){
         $this->receipts = [
+            'postsController' => function()
+            {
+                return new PostsController(
+                    $this->make('postsRepository')
+                    );
+            },
             'postsRepository' => function()
             {
                 return new PostsRepository(
