@@ -32,8 +32,9 @@ class PostsController {
         //echo "<h1>Postindex wurde ausgeführt</h1>";
     }
     
-    public function show($id)
+    public function show()
     {
+        $id = $_GET["id"];
         $post = $this->postsRepository->fetchPosts($id);
         
         

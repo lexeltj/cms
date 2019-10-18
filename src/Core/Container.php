@@ -3,6 +3,7 @@ namespace App\Core;
 use App\Posts\PostsRepository;
 use PDO;
 use App\Posts\PostsController;
+use PDOException;
 
 class Container {
     
@@ -25,14 +26,25 @@ class Container {
                     );
             },
             'myDB' => function(){
+                
             $dsn = 'mysql:dbname=blog;host=127.0.0.1';
             $user = 'root';
             $password = '';
-            
+            try {
+                //echo "ich versuche";
             $myDB = new PDO($dsn,$user,$password);
+           
+             } catch (PDOException $e) {
+                echo "Datenbankverbindung kann nicht aufgebaut werden";
+                
+                //throw new Exception("Datenbankverbindung kann nicht aufgebaut werden");
+                die();
+            }
+            
             
             $myDB->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             return $myDB;
+            
             }
         ];
     }
