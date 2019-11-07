@@ -2,7 +2,9 @@
 namespace App\Posts;
 
 
-class PostsController {
+use App\Core\AbstractController;
+
+class PostsController extends AbstractController {
     
     
     public function __construct(PostsRepository $postsRepository)
@@ -10,22 +12,12 @@ class PostsController {
         $this->postsRepository = $postsRepository;
     }
     
-    protected function render($view, $params) {
-        
-       //foreach ($params as $key => $value) {
-       //     ${$key} = $value;
-       // }
-        
- 
-       extract($params);
-       
-        include __DIR__ . "/../../views/{$view}.php";
-    }
+   
     
     
     public function index() 
     {
-        $posts = $this->postsRepository->fetchPost();
+        $posts = $this->postsRepository->all();
       
         $this->render("post/index", ['posts' => $posts]);
         
@@ -35,7 +27,7 @@ class PostsController {
     public function show()
     {
         $id = $_GET["id"];
-        $post = $this->postsRepository->fetchPosts($id);
+        $post = $this->postsRepository->find($id);
         
         
         $this->render("post/post", ['post' => $post]);
