@@ -4,6 +4,7 @@ use App\Posts\PostsRepository;
 use PDO;
 use App\Posts\PostsController;
 use PDOException;
+use App\Posts\CommentsRepository;
 
 class Container {
     
@@ -16,7 +17,8 @@ class Container {
             'postsController' => function()
             {
                 return new PostsController(
-                    $this->make('postsRepository')
+                    $this->make('postsRepository'),
+                    $this->make('commentsRepository')
                     );
             },
             'postsRepository' => function()
@@ -25,6 +27,14 @@ class Container {
                     $this->make("myDB")
                     );
             },
+            
+            'commentsRepository' => function()
+            {
+              return new CommentsRepository($this->make("myDB"));  
+            },
+            
+            
+            
             'myDB' => function(){
                 
             $dsn = 'mysql:dbname=blog;host=127.0.0.1';

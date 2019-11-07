@@ -5,7 +5,7 @@ use PDO;
 
 abstract class AbstractRepository {
     
-    private $myDB;
+    protected $myDB;
     
     public function __construct(PDO $myDB)
     {
