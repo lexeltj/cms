@@ -30,6 +30,12 @@ class PostsController extends AbstractController {
         $id = $_GET["id"];
         if (isset($_POST['content'])) {
             $content = $_POST['content'];
+            
+            //$content = str_replace("<", "&lt", $content);
+            //$content = str_replace(">", "&gt", $content);
+            
+            
+            
             $this->commentsRepository->insertForPost($id, $content);
         }
         
