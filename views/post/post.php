@@ -21,7 +21,7 @@
     
     	<textarea name="content" class="form-control"></textarea>
     	<br>
-    	<input type="submit" value="Kommentar hinzufuegen" class="btn btn-primary" />
+    	<input type="submit" value="Kommentar hinzufügen" class="btn btn-primary" />
     
     
     </form>

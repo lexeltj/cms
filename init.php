@@ -2,6 +2,7 @@
 require __DIR__ .'/autoload.php';
 require __DIR__ .'/database.php';
 
+setlocale(LC_ALL, "de_DE");
 
 function e($str)
 {

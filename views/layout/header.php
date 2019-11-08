@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -40,6 +40,7 @@
       .row.content {height:auto;} 
     }
   </style>
+  
 </head>
 <body>
 
